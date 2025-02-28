@@ -6,16 +6,6 @@ const router = express.Router();
 import {fal} from '@fal-ai/client'
 import { FalAiModel } from "./FalAiModel";
 
-// router.post("/fal-ai/webhook/train", async (req, res) => {
-//     console.log(req.body);
-//     res.json({ message: "Train Webhook Received!" });
-// });
-
-// router.post("/fal-ai/webhook/image", async (req, res) => {
-//     console.log(req.body);
-//     res.json({ message: "Image Webhook Received!" });
-// });
-
 router.post("/fal-ai/webhook/train", async (req, res) => {
     console.log("webhook received for /fal-ai/webhook/train")
     console.log(req.body);
@@ -47,12 +37,12 @@ router.post("/fal-ai/webhook/train", async (req, res) => {
 
 
 router.post("/fal-ai/webhook/image", async (req, res) => {
-    console.log("/fal-ai/webhook/image");
+    console.log("REquest recived from falAi for image generation with the below response");
     console.log(req.body)
     const requestId = req.body.request_id;
 
     //if error comes from the falai 
-    if (req.body.status === "ERROR") {
+    if (req.body.status == "ERROR") {
         res.status(411).json({});
         prismaClient.outputImages.updateMany({
             where: {
