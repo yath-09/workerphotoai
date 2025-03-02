@@ -74,6 +74,7 @@ router.post("/fal-ai/webhook/image", async (req, res) => {
 
 //POSt mthod receving from clerk for dding entries in database
 //https://clerk.com/docs/webhooks/sync-data   use this for refrenece 
+//will help us to take decision anything in user creation,deletion,updation 
 
 router.post("/api/webhook/clerk", async (req, res) => {
     console.log("recived the request")
